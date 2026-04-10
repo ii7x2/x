@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catch the Silly Chicken</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #f0f8ff;
+    }
+    #chicken {
+      position: absolute;
+      font-size: 50px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🐔 Catch the Silly ASS Chicken!</h1>
+<p>Click the chicken as many times as you can in 67 seconds!</p>
+<h2 id="score">Score: 0</h2>
+<h2 id="timer">Time: 67</h2>
+
+<div id="chicken">🐔</div>
+
+<script>
+let score = 0;
+let timeLeft = 6.7;
+const chicken = document.getElementById("chicken");
+
+function moveChicken() {
+  chicken.style.top = Math.random() * 80 + "%";
+  chicken.style.left = Math.random() * 80 + "%";
+}
+
+chicken.onclick = () => {
+  score++;
+  document.getElementById("score").innerText = "Score: " + score;
+  moveChicken();
+};
+
+let game = setInterval(() => {
+  timeLeft--;
+  document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+  if (timeLeft <= 0) {
+    clearInterval(game);
+    alert("Game Over! You caught " + score + " chickens 😂");
+  }
+}, 1000);
+
+moveChicken();
+</script>
+
+</body>
+</html>
